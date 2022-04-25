@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <!--list view-->
+        <record model="ir.ui.view" id="city_list_view">
+            <field name="name">City List</field>
+            <field name="model">task.city</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!--form view-->
+        <record model="ir.ui.view" id="city_form_view">
+            <field name="name">City Form</field>
+            <field name="model">task.city</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!--action oppening view on model-->
+        <record model="ir.actions.act_window" id="city_action_window">
+            <field name="name">city window</field>
+            <field name="res_model">task.city</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--top menu to item-->
+        <menuitem name="QCTECH" id="qctech_menu_root"/>
+        <!--menu categorie-->
+        <menuitem name="Cities" id="qctech_cities_cat" parent="qctech_menu_root" action="city_action_window"/>
+    </data>
+</odoo>

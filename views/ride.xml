@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <!--list view-->
+        <record model="ir.ui.view" id="ride_list_view">
+            <field name="name">Ride List</field>
+            <field name="model">picking.ride</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence"/>
+                    <field name="city_id"/>
+                    <field name="source"/>
+                    <field name="destination"/>
+                    <field name="date_depart"/>
+                    <field name="date_arrive"/>
+                    <field name="chauffeur_id"/>
+                    <field name="etat"/>
+                    <field name="picking_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--form view-->
+        <record model="ir.ui.view" id="ride_form_view">
+            <field name="name">Ride List</field>
+            <field name="model">picking.ride</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="picking_id"/>
+                                <field name="sequence"/>
+                                <field name="city_id"/>
+                                <field name="source"/>
+                                <field name="destination"/>
+                            </group>
+                            <group>
+                                <field name="date_depart"/>
+                                <field name="date_arrive"/>
+                                <field name="chauffeur_id" domain="[('is_driver','=',True)]"/>
+                                <field name="etat"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--action oppening view on model-->
+        <record model="ir.actions.act_window" id="ride_action_window">
+            <field name="name">Ride window</field>
+            <field name="res_model">picking.ride</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--menu categorie-->
+        <menuitem name="Picking ride" id="qctech_ride_cat" parent="qctech_menu_root" action="ride_action_window"/>
+    </data>
+</odoo>
